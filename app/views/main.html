@@ -10,7 +10,11 @@
 <div class="row">
   <table class="table table-striped">
     <thead><th ng-repeat="column in columns">{{column}}</th></thead>
-    <tr ng-repeat="row in rows"><td ng-repeat="item in row track by $index">{{item}}</td></tr>
+    <tr ng-repeat="row in rows">
+        <td ng-repeat="item in row track by $index">
+            {{item}} <a href="#/slide/{{item}}" ng-if="$index == 0">link</a>
+        </td>
+    </tr>
   </table>
 </div>
 

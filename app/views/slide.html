@@ -1,0 +1,14 @@
+  <div id="map"></div>
+  <script>
+  $(document).ready( function(){
+  $('#map').css({height: $(window).height() + 'px'});
+  var map=new L.map('map');
+  var slideUrl='56061/{z}/{y}/{x}.jpg'
+  slide=L.tileLayer(slideUrl,{minZoom: 0, maxZoom: 7, noWrap: true, errorTile: '56061/blank.png'});
+  var southWest=map.unproject([0, 10000], map.getMaxZoom());
+  var northEast=map.unproject([18652, 0], map.getMaxZoom());
+  map.addLayer(slide);
+  map.setView(new L.LatLng(0, 0), 3);
+  function onMapMove(e){console.log('Center:' + map.getCenter() + ' Zoom:' + map.getZoom());}map.on('moveend', onMapMove);});
+  $(window).resize(function(){$('#map').css({height: $(window).height() + 'px'});});
+  </script>
